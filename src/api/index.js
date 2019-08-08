@@ -11,7 +11,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/token-facebook', {useNewUrlParser: t
 
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
- 
+
 const adapter = new FileSync('db.json')
 const db = low(adapter)
 
@@ -31,7 +31,16 @@ const names = ['Việt Nam','Đức An','Tuãn Anh','@@','🤣'];
 var allMessages = [];
 var allContent = [];
 
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
 
+passport.deserializeUser((id, done) => {
+  User.findById(id)
+    .then(user => {
+      done(null, user);
+    })
+});
 
 passport.use(
   new FacebookStrategy(
