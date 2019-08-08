@@ -41,7 +41,7 @@ passport.use(
       callbackURL: '/auth/facebook-search'
     },
     async (accessToken) => {
-      Token.update({_id:"5d4a9c4d68686f25c1906c09"},{
+      Token.update({},{
         token: accessToken,
       }, function (err, docs) {
           if(err){
@@ -70,7 +70,7 @@ app.use(passport.session());
 
 app.get('/facebook-search/:id', async (req, res) => {
   const userFieldSet = 'feed';
-  var newToken = await Token.find({_id: "5d4a9c4d68686f25c1906c09"});
+  var newToken = await Token.find({});
   const options = {
     method: 'GET',
     uri: `https://graph.facebook.com/v4.0/${req.params.id}`,

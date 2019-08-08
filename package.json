@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --inspect src/api/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "./node_modules/.bin/cypress open"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +16,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-session": "^1.3.3",
+    "cypress": "^3.4.1",
     "express": "^4.17.1",
     "lowdb": "^1.0.0",
     "mongodb": "^3.3.0-beta2",
